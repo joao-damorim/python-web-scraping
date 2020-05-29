@@ -9,6 +9,10 @@ res.encoding = 'utf-8'
 
 soup = BeautifulSoup(res.text, 'html.parser')
 
-all_posts = soup.find_all(class_="bloco")
+posts = soup.find_all(class_="bloco")
+
+all_posts = []
+for post in posts:
+    print(post.find('h2').text)
 
 print(all_posts)
