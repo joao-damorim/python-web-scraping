@@ -1,4 +1,5 @@
 import requests
+import json
 from bs4 import BeautifulSoup
 
 #res = requests.get("https://digitalinnovation.one/blog/")
@@ -12,6 +13,7 @@ soup = BeautifulSoup(res.text, 'html.parser')
 posts = soup.find_all(class_= "bloco")
 
 all_posts = []
+
 for post in posts:
     info = post.find(class_= "texts")
     info2 = post.find(class_= "info")
@@ -26,4 +28,7 @@ for post in posts:
 
     #print(autor)
 
-print(all_posts)
+#print(all_posts)
+
+with open('posts.json', 'w') as json_file:
+    json.dump(all_posts, json_file)
